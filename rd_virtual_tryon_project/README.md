@@ -1,42 +1,54 @@
 # R&D Prototype: Virtual Try-On and Visual Matching
 
 ## Overview
-This project compares two basic image-processing approaches for try-on previews and creates a visual matching prototype.
+
+This project compares two basic image-processing approaches for try-on previews and implements a visual matching prototype using a catalog of 50 garment images.
 
 ## Features
+
 - Person and garment image inputs
 - Approach 1: garment overlay
 - Approach 2: image blending
-- Top-5 visual matching results
-- Latency comparison for 10 sample pairs
+- Top-five visual matching
+- Latency comparison for 10 sample pairs per approach
 - Feasibility memo
 
 ## Project Structure
-- data/person_images/: person photos
-- data/garment_images/: garment images
-- data/catalog/: garment catalog
-- outputs/approach1/: overlay previews
-- outputs/approach2/: blending previews
-- outputs/visual_matching_results.csv: matching results
-- outputs/latency_comparison.csv: latency measurements
-- outputs/feasibility_memo.md: feasibility memo
+
+- `data/person_images/` — person images
+- `data/garment_images/` — garment images
+- `data/catalog/` — 50 garment catalog images
+- `outputs/approach1/` — overlay previews
+- `outputs/approach2/` — blending previews
+- `outputs/visual_matching_results.csv` — 250 matching result records
+- `outputs/latency_comparison.csv` — latency measurements
+- `outputs/feasibility_memo.md` — feasibility memo
 
 ## Methodology
-Approach 1 overlays a resized garment image on a person image.
-Approach 2 blends the person image with a resized garment image.
-Visual matching ranks catalog images using average RGB color distance.
+
+Approach 1 overlays a resized garment image on a person image. Approach 2 blends a resized garment image with a person's image. Visual matching uses average RGB colour and colour histograms to rank the five most similar catalog items.
 
 ## Results
-Ten sample pairs were processed using each approach.
-Approach 1 average latency: 0.3247 seconds.
-Approach 2 average latency: 0.3338 seconds.
-Visual matching generated 55 result records for 11 catalog images.
+
+- Catalog size: 50 garment images
+- Query images: 50
+- Matches per query: 5
+- Total matching records: 250
+- Approach 1 average latency: 0.3247 seconds
+- Approach 2 average latency: 0.3338 seconds
+
+Latency measurements are from one Google Colab run and may vary.
 
 ## Limitations
-These are basic image-processing prototypes, not realistic AI-powered virtual try-on systems. The catalog contains 11 images rather than the target of approximately 50. Color similarity does not guarantee that two garments have similar styles.
+
+These are basic image-processing prototypes, not realistic AI-powered virtual try-on systems. Colour-based matching does not guarantee similar garment styles, shapes, or designs. No formal human quality evaluation or pretrained AI try-on comparison has been completed.
 
 ## Privacy
-Use person photos only with appropriate consent. Avoid publicly sharing identifiable images, restrict access, and delete test photos when they are no longer needed.
+
+Use images only with appropriate permission and consent. Restrict access to personal photographs, avoid public sharing without permission, and delete test images when no longer required.
 
 ## Reproduction
-Run the notebook cells in order to install dependencies, load images, generate previews, run visual matching, measure latency, and create the feasibility memo.
+
+Open `R&D_task.ipynb` in Google Colab, ensure the input images and dependencies are available, and run the notebook cells in order. Review the generated previews, latency measurements, visual matching CSV, and feasibility memo.
+
+File paths may need adjustment when reproducing the project in another environment.
