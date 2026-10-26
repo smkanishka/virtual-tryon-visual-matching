@@ -50,6 +50,8 @@ The prototype uses Python image-processing libraries and was developed and teste
 
 This does not mean the overall solution is cost-free. Development time, storage, computing resources, hosting, and future model inference may introduce costs. Actual costs would depend on the selected model, hardware, usage volume, and deployment method.
 
+**Direct library/API cost:** ₹0 per image during the reported tests, as no paid inference API was used. Compute, storage, and hosting costs are excluded.
+
 ## 7. Privacy and Image-Consent Risks
 
 Person photographs may contain identifiable personal information. The prototype should use images that are permitted for the intended purpose and obtain appropriate consent before processing personal photographs.
